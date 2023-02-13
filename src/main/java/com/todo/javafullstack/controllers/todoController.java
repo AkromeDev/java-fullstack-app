@@ -1,7 +1,6 @@
 package com.todo.javafullstack.controllers;
 
 import com.todo.javafullstack.models.Todo;
-//import com.todo.javafullstack.respositories.TodoJpaRepository;
 import com.todo.javafullstack.services.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,9 +21,6 @@ public class todoController {
     @Autowired
     private TodoService todoService;
 
-//    @Autowired
-//    private TodoJpaRepository todoJpaRepository;
-
     @GetMapping
     public void createTable() {
         todoService.createTodoTable();
@@ -37,17 +33,16 @@ public class todoController {
 
     @GetMapping("/todo")
     public Todo getTodoById(@RequestParam Long id) {
-//        return todoJpaRepository.findById(id).get();
         return todoService.getById(id);
     }
 
-    @PostMapping
+    @PostMapping("/todoList")
     @ResponseStatus(HttpStatus.OK)
     public void postTodos(@RequestBody List<Todo> todoList) {
         todoService.postTodos(todoList);
     }
 
-    @PostMapping
+    @PostMapping("/todos")
     @ResponseStatus(HttpStatus.OK)
     public void createTodo(@RequestBody Todo todo) {
         todoService.createTodo(todo);
