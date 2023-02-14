@@ -49,7 +49,7 @@ public class TodoRepository {
 
     @Autowired
     public void createTable() {
-        try (Connection connection = getConnecion()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             statement.executeUpdate(CREATE_TABLE_SQL);
             System.out.println("Table has been created");
@@ -60,7 +60,7 @@ public class TodoRepository {
     }
 
     public void createTodo(Todo todo) {
-        try (Connection connection = getConnecion()) {
+        try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL_TODO);
             preparedStatement.setString(1, todo.getTitle());
             preparedStatement.setString(2, todo.getDescription());
@@ -73,7 +73,7 @@ public class TodoRepository {
     }
 
     public List<Todo> getAll() {
-        try (Connection connection = getConnecion()) {
+        try (Connection connection = getConnection()) {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SELECT_ALL_SQL);
             List<Todo> todoList = new ArrayList<>();
@@ -88,7 +88,7 @@ public class TodoRepository {
     }
 
     public Todo getById(Long id) {
-        try (Connection connection = getConnecion()) {
+        try (Connection connection = getConnection()) {
             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_ID_SQL);
             preparedStatement.setString(1, id.toString());
             ResultSet result = preparedStatement.executeQuery();
@@ -100,7 +100,23 @@ public class TodoRepository {
         return null;
     }
 
-    private Connection getConnecion() {
+    public void postTodos(List<Todo> todoList) {
+        try (Connection connection = getConnection()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(INSERT_SQL_TODO);
+
+            for (Todo todo: todoList) {
+                preparedStatement.setString(1, todo.getTitle());
+                preparedStatement.setString(2, todo.getDescription());
+                preparedStatement.setString(3, todo.getDueDate().format(formatter));
+                preparedStatement.setString(4, todo.getCompletionDate().format(formatter));
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
+        }
+    }
+
+    private Connection getConnection() {
         try {
             return DriverManager.getConnection(url, username, password);
         } catch (SQLException sqlException) {
@@ -118,6 +134,4 @@ public class TodoRepository {
         return new Todo(title, description, dueDate, completionDate);
     }
 
-    public void postTodos(List<Todo> todoList) {
-    }
 }
