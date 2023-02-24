@@ -6,28 +6,29 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http'
 import { TodoService } from './services/todo.service';
 import { TableComponent } from './components/table/table.component';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableModule } from '@angular/material/table';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputComponent } from './components/input/input.component';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatPaginatorModule,
-    MatTableModule,
     BrowserAnimationsModule,
-    InputComponent
+    TableComponent,
+    InputComponent,
+    MatDialogModule
   ],
-  providers: [TodoService],
+  providers: [
+    TodoService,
+    InputComponent,
+    // { provide: MatDialogRef, useValue: {} },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
