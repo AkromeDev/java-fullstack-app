@@ -1,12 +1,14 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { Todo } from 'src/app/models/todo';
 
 @Component({
   selector: 'app-table',
+  standalone: true,
+  imports: [MatPaginatorModule, MatTableModule],
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
