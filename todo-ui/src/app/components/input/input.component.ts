@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 // import { MatDatepickerModule } from '@angular/material/datepicker';
 // import { MatNativeDateModule } from '@angular/material/core';
-// import { MatInputModule } from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 // import { MatTableModule } from '@angular/material/table';
 // import { MatIconModule } from '@angular/material/icon';
 import { MatDialog, MatDialogConfig, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -18,6 +18,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss']
