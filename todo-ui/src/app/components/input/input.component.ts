@@ -46,14 +46,11 @@ export class InputComponent {
   }
 
   openDialog() {
-
       const dialogConfig = new MatDialogConfig();
-
       // dialogConfig.disableClose = true;
       // dialogConfig.panelClass = true;
+      // dialogConfig.hasBackdrop = true;
       dialogConfig.autoFocus = true;
-      dialogConfig.hasBackdrop = true;
-
 
       this.dialog.open(InputComponent, dialogConfig);
   }

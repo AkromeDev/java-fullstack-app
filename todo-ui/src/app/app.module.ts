@@ -22,7 +22,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTI
     BrowserAnimationsModule,
     TableComponent,
     InputComponent,
-    MatDialogModule
+    MatDialogModule,
   ],
   providers: [
     TodoService,
@@ -30,6 +30,7 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTI
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [InputComponent]
 })
 export class AppModule { }
