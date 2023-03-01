@@ -35,7 +35,7 @@ export class InputComponent {
       private dialogRef: MatDialogRef<InputComponent>,
       @Inject(MAT_DIALOG_DATA) data: any
     ) {
-      this.description = data.description;
+      // this.description = data.description;
     }
 
   ngOnInit() {
