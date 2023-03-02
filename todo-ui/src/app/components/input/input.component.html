@@ -8,9 +8,39 @@
                 placeholder="Course Description"
                 formControlName="description">
     </mat-form-field>
+    
+    <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>First campaign</mat-label>
+        <mat-date-range-input
+          [formGroup]="campaignOne"
+          [rangePicker]="campaignOnePicker"
+          [comparisonStart]="campaignTwo.value.start"
+          [comparisonEnd]="campaignTwo.value.end">
+          <input matStartDate placeholder="Start date" formControlName="start">
+          <input matEndDate placeholder="End date" formControlName="end">
+        </mat-date-range-input>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="campaignOnePicker"></mat-datepicker-toggle>
+        <mat-date-range-picker #campaignOnePicker></mat-date-range-picker>
+      </mat-form-field>
+      
+      <mat-form-field class="example-form-field" appearance="fill">
+        <mat-label>Second campaign</mat-label>
+        <mat-date-range-input
+          [formGroup]="campaignTwo"
+          [rangePicker]="campaignTwoPicker"
+          [comparisonStart]="campaignOne.value.start"
+          [comparisonEnd]="campaignOne.value.end">
+          <input matStartDate placeholder="Start date" formControlName="start">
+          <input matEndDate placeholder="End date" formControlName="end">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="campaignTwoPicker"></mat-datepicker-toggle>
+        <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+        <mat-date-range-picker #campaignTwoPicker></mat-date-range-picker>
+      </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions>
-    <button class="mat-raised-button"(click)="close()">Close</button>
-    <button class="mat-raised-button mat-primary"(click)="save()">Save</button>
+    <button mat-flat-button color="primary" (click)="close()">Close</button>
+    <button mat-flat-button color="accent" (click)="save()">Save</button>
 </mat-dialog-actions>

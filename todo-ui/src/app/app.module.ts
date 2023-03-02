@@ -9,7 +9,7 @@ import { TableComponent } from './components/table/table.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputComponent } from './components/input/input.component';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS } from "@angular/material/dialog";
-
+import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,9 @@ import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTI
     TodoService,
     InputComponent,
     { provide: MAT_DIALOG_DATA, useValue: {} },
-    { provide: MatDialogRef, useValue: {} }
+    { provide: MAT_DATE_FORMATS, useValue: {} },
+    { provide: MatDialogRef, useValue: {} },
+    { provide: DateAdapter, useValue: {} },
   ],
   bootstrap: [AppComponent],
   entryComponents: [InputComponent]
